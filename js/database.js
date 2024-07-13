@@ -7,7 +7,7 @@ init();
 
 async function init() {
     db = await idb.openDb(dbName, dbVersion, db => {
-      db.createObjectStore('songss', {keyPath: 'uuid'});
+      db.createObjectStore('songs', {keyPath: 'uuid'});
     });
   
     loadSongs();

@@ -45,14 +45,12 @@ td > textarea {
     border: none;
     outline: none;
     background-color: transparent;
+    color: black;
 }
 
 td > select {
     text-align: center;
     appearance: none;
-}
-td > select:disabled {
-    color: black;
 }
 
 td > textarea {
