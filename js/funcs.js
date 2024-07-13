@@ -41,3 +41,8 @@ async function writeJsonString() {
 
 }
 
+
+
+async function songsong() {
+    songs = await loadSongs();
+}
