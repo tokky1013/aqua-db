@@ -1,5 +1,6 @@
 const dbName = 'aquaDB';
 const dbVersion = 1;
+const storeName = 'songs';
 
 let db;
 
@@ -7,15 +8,15 @@ init();
 
 async function init() {
     db = await idb.openDb(dbName, dbVersion, db => {
-      db.createObjectStore('songs', {keyPath: 'uuid'});
+      db.createObjectStore(storeName, {keyPath: 'uuid'});
     });
   
     loadSongs();
 }
 
 async function loadSongs() {
-    const tx = db.transaction('songs');
-    const songStore = tx.objectStore('songs');
+    const tx = db.transaction(storeName);
+    const songStore = tx.objectStore(storeName);
   
     const songs = await songStore.getAll();
   
@@ -39,16 +40,16 @@ function loadSongsFromJson(jsonString) {
 
 async function saveSongs(songs, overwrite=false) {
     async function addSong(song) {
-        const tx = db.transaction('songs', 'readwrite');
+        const tx = db.transaction(storeName, 'readwrite');
         if (overwrite) {
             try {
-                await tx.objectStore('songs').put(song.toDict());
+                await tx.objectStore(storeName).put(song.toDict());
             } catch(err) {
                 throw err;
             }
         } else {
             try {
-                await tx.objectStore('songs').add(song.toDict());
+                await tx.objectStore(storeName).add(song.toDict());
             } catch(err) {
                 // すでに同じuuidの曲がある場合はuuidを変更して保存
                 if (err.name == 'ConstraintError') {
@@ -67,6 +68,6 @@ async function saveSongs(songs, overwrite=false) {
 }
 
 async function deleteSongs() {
-    let tx = db.transaction('songs', 'readwrite');
-    await tx.objectStore('songs').clear();
+    let tx = db.transaction(storeName, 'readwrite');
+    await tx.objectStore(storeName).clear();
 }
