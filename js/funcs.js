@@ -308,5 +308,4 @@ function resetFilter() {
     showTable(editedSongs);
     if(mode === 'edit') startEditMode();
     else exitEditMode();
-    closePopup();
 }
