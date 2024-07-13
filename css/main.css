@@ -1,0 +1,86 @@
+:root {
+    --main-color: #e6e6e6;
+    --header-height: 80px;
+    --btn-container-height: 80px;
+}
+
+
+header {
+    height: var(--header-height);
+    color: white;
+}
+
+main {
+    min-height: calc(100svh - var(--header-height) - var(--btn-container-height));
+    background-color: var(--main-color);
+    padding: 5px;
+    overflow-x: scroll;
+}
+
+#main-container {
+    height: calc(100svh - var(--btn-container-height));
+    overflow-y: scroll;
+}
+
+#btn-container {
+    height: var(--btn-container-height);
+    display: flex;
+    padding: 15px;
+}
+
+/* ---------------------------------テーブル関連--------------------------------- */
+#table {
+    font-size: small;
+    min-width: 1000px;
+}
+
+th {
+    text-align: center;
+}
+
+td > input,
+td > select,
+td > textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+td > select {
+    text-align: center;
+    appearance: none;
+}
+td > select:disabled {
+    color: black;
+}
+
+td > textarea {
+    overflow: hidden;
+    resize: none;
+}
+
+td > textarea::-webkit-scrollbar{
+    display: none;
+}
+
+td:nth-of-type(5) {
+    text-align: center;
+}
+
+/* ---------------------------------ポップアップ関連--------------------------------- */
+#back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.popup {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: none;
+}
