@@ -182,19 +182,19 @@ function getDisplayedSongs() {
         if (this.id) {
             const uuid = this.id.replace('row-', '');
             
-            const updatedSong = new Song({
+            const disabledSong = new Song({
                 title: $('#title-' + uuid).val(),
                 artist: $('#artist-' + uuid).val(),
                 key: $('#key-' + uuid).val() - 0,
                 highestTone: $('#highest-tone-' + uuid).val() - 0,
                 score: $('#score-' + uuid).val(),
                 comment: $('#comment-' + uuid).val(),
-                sang: $('#sang-' + uuid).val(),
+                sang: $('#sang-' + uuid).prop('checked'),
                 uuid: uuid,
                 createdAt: $('#created-at-' + uuid).data('created-at') - 0,
             });
 
-            disabledSongs.push(updatedSong);
+            disabledSongs.push(disabledSong);
         }
     });
     return disabledSongs;
@@ -236,6 +236,7 @@ async function save() {
         deletedSongs = [];
         exitEditMode();
         songs = await loadSongs();
+        showTable(getDisplayedSongs());
     }
 }
 
@@ -302,7 +303,7 @@ function resetFilter() {
     resetFilterInput();
     if(mode === 'edit') updateEditedSongs();
     else editedSongs = songs;
-    
+
     notDisplayedSongs = [];
     showTable(editedSongs);
     if(mode === 'edit') startEditMode();
