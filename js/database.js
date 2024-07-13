@@ -3,15 +3,17 @@ const dbVersion = 1;
 const storeName = 'songs';
 
 let db;
+let songs;
 
-init();
+initDb();
 
-async function init() {
+async function initDb() {
     db = await idb.openDb(dbName, dbVersion, db => {
       db.createObjectStore(storeName, {keyPath: 'uuid'});
     });
   
-    loadSongs();
+    songs = await loadSongs();
+    init();
 }
 
 async function loadSongs() {
@@ -67,7 +69,12 @@ async function saveSongs(songs, overwrite=false) {
     }
 }
 
-async function deleteSongs() {
+// uuidを指定したら指定したものだけ削除
+async function deleteSongs(uuid=null) {
     let tx = db.transaction(storeName, 'readwrite');
-    await tx.objectStore(storeName).clear();
+    if(uuid) {
+        await tx.objectStore(storeName).delete(uuid);
+    }else {
+        await tx.objectStore(storeName).clear();
+    }
 }
