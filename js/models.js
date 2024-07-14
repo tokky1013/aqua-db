@@ -90,11 +90,18 @@ class Song {
                 return this.title <= other.title;
 
             case 'artist':
+                if(this.artist === other.artist) return this.compare(other, 'title');
                 return this.artist <= other.artist;
 
             case 'score':
-                let score1 = this.score.replace(/\(.\)/, '');
-                let score2 = other.score.replace(/\(.\)/, '');
+                const fullnums = '０１２３４５６７８９';
+                const reFullnums = new RegExp('['+fullnums+']','g');
+                const toHalfnums = text => text.replace(reFullnums, m=>fullnums.indexOf(m));
+
+                let score1 = this.score;
+                let score2 = other.score;
+                score1 = toHalfnums(score1).replace(/[\(（].*[\)）]/g, '');
+                score2 = toHalfnums(score2).replace(/[\(（].*[\)）]/g, '');
                 score1 = !isNaN(score1) ? score1-0 : 0;
                 score2 = !isNaN(score2) ? score2-0 : 0;
     
