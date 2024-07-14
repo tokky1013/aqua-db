@@ -1,6 +1,6 @@
-let deletedSongs = [];
-let notDisplayedSongs = [];
-let editedSongs = [];
+let deletedSongs = [];          // DBへの保存時に削除された曲をDBから消すためのもの
+let notDisplayedSongs = [];     // filterとresetFilter以外では変更されないはず
+let editedSongs = [];           // 参照される時は常にnotDisplayedSongsとテーブルに表示された曲(getDisplayedSongsで取得できるもの)の和になっているはず
 let isEditMode = false;
 
 // 編集モードを終了する時等
