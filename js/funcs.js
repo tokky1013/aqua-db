@@ -122,8 +122,8 @@ function getTableRow(song) {
     let html = `<tr id="row-${dict.uuid}">`;
 
     html += `
-    <td><input id="title-${dict.uuid}" type="text" value="${dict.title}"></td>
-    <td><input id="artist-${dict.uuid}" type="text" value="${dict.artist}"></td>
+    <td><textarea id="title-${dict.uuid}">${dict.title}</textarea></td>
+    <td><textarea id="artist-${dict.uuid}">${dict.artist}</textarea></td>
     `
 
     html += `<td><select id="key-${dict.uuid}">`
@@ -206,8 +206,10 @@ function updateEditedSongs() {
 
 // テーブルの行を削除する
 function deleteTableRow(uuid) {
-    $('#row-' + uuid).remove();
-    deletedSongs.push(uuid);
+    if(confirm('この曲を削除しますか？')) {
+        $('#row-' + uuid).remove();
+        deletedSongs.push(uuid);
+    }
 }
 
 // テーブルの行を追加する
@@ -234,9 +236,9 @@ async function save() {
             deleteSongs(deletedSong);
         });
         deletedSongs = [];
-        exitEditMode();
         songs = await loadSongs();
         showTable(getDisplayedSongs());
+        exitEditMode();
     }
 }
 
@@ -271,7 +273,6 @@ function filter() {
     showTable(displayedSongs);
     if(isEditMode) startEditMode();
     else exitEditMode();
-    closePopup();
 }
 
 function sort(songs, order) {
