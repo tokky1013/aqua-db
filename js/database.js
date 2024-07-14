@@ -9,7 +9,7 @@ initDb();
 
 async function initDb() {
     db = await idb.openDb(dbName, dbVersion, db => {
-      db.createObjectStore(storeName, {keyPath: 'uuid'});
+        db.createObjectStore(storeName, {keyPath: 'uuid'});
     });
   
     songs = await loadSongs();

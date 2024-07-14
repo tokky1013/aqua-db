@@ -80,6 +80,8 @@ class Song {
 
     // 自分の方が早ければtrueを返す
     compare(other, field) {
+        if(this.uuid === 'example') return true;
+        if(other.uuid === 'example') return false;
         switch (field) {
             case 'adding-date':
                 return this.createdAt >= other.createdAt;

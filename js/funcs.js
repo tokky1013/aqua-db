@@ -1,6 +1,7 @@
 let deletedSongs = [];
 let notDisplayedSongs = [];
 let editedSongs = [];
+let isEditMode = false;
 
 // 編集モードを終了する時等
 function init() {
@@ -34,7 +35,7 @@ function resetFilterInput() {
 }
 
 async function readJson() {
-    if(mode === 'edit') {
+    if(isEditMode) {
         if(!confirm('データを読み込みますか？\n保存していないデータは失われます。')) return;
     }
     const jsonString = $('#json-input-content').val();
@@ -151,7 +152,6 @@ function getTableRow(song) {
     return html;
 }
 // ---------------------------------編集モード関連---------------------------------
-let mode = 'normal';
 function startEditMode() {
     $(':root').get(0).style.setProperty('--btn-container-height', '80px');
     $('#btn-container').css('display', 'flex');
@@ -160,7 +160,7 @@ function startEditMode() {
     $('td > input, td > textarea').prop('readonly', false);
     $('td > select').prop('disabled', false);
     $('#switch-edit-mode').css('display', 'none');
-    mode = 'edit';
+    isEditMode = true;
 }
 function exitEditMode() {
     $(':root').get(0).style.setProperty('--btn-container-height', '0px');
@@ -170,7 +170,7 @@ function exitEditMode() {
     $('td > input, td > textarea').prop('readonly', true);
     $('td > select').prop('disabled', true);
     $('#switch-edit-mode').css('display', 'inline');
-    mode = 'normal';
+    isEditMode = false;
 }
 
 // テーブルに表示されている曲を取得
@@ -242,7 +242,7 @@ async function save() {
 
 // ---------------------------------フィルタリング/ソーティング---------------------------------
 function filter() {
-    if(mode === 'edit') updateEditedSongs();
+    if(isEditMode) updateEditedSongs();
     else editedSongs = songs;
 
     notDisplayedSongs = [];
@@ -269,7 +269,7 @@ function filter() {
     displayedSongs = sort(displayedSongs, order);
 
     showTable(displayedSongs);
-    if(mode === 'edit') startEditMode();
+    if(isEditMode) startEditMode();
     else exitEditMode();
     closePopup();
 }
@@ -301,11 +301,11 @@ function sort(songs, order) {
 
 function resetFilter() {
     resetFilterInput();
-    if(mode === 'edit') updateEditedSongs();
+    if(isEditMode) updateEditedSongs();
     else editedSongs = songs;
 
     notDisplayedSongs = [];
     showTable(editedSongs);
-    if(mode === 'edit') startEditMode();
+    if(isEditMode) startEditMode();
     else exitEditMode();
 }
