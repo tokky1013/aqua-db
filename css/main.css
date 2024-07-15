@@ -4,6 +4,9 @@
     --btn-container-height: 0px;
 }
 
+body {
+    background-color: var(--main-color);
+}
 
 header {
     height: var(--header-height);
@@ -12,8 +15,7 @@ header {
 
 main {
     min-height: calc(100svh - var(--header-height) - var(--btn-container-height));
-    background-color: var(--main-color);
-    padding: 5px;
+    margin: 5px;
     overflow-x: scroll;
 }
 
