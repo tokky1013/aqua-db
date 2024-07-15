@@ -19,6 +19,10 @@ main {
     overflow-x: scroll;
 }
 
+footer {
+    background-color: white;
+}
+
 #main-container {
     height: calc(100svh - var(--btn-container-height));
     overflow-y: scroll;
