@@ -56,11 +56,9 @@ class Song {
         const now = new Date();
         const diff = now - createdAt;
 
-        if (diff >= 1000 * 60 * 60 * 24) return createdAt.toLocaleDateString();
-        else if (diff >= 1000 * 60 * 60) return Math.floor(diff / 1000 / 60 / 60) + '時間前';
-        else if (diff >= 1000 * 60) return Math.floor(diff / 1000 / 60) + '分前';
-        else if (diff >= 1000) return Math.floor(diff / 1000) + '秒前';
-        else return '今';
+        if (diff >= 1000 * 60 * 60 * 24 * 7) return createdAt.toLocaleDateString();
+        else if (diff >= 1000 * 60 * 60 * 24) return Math.floor(diff / 1000 / 60 / 60 / 24) + '日前';
+        else return '今日';
     }
 
     toDict() {
