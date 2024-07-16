@@ -1,9 +1,9 @@
-const version = '1.0.3';
+const version = '1.1.0';
 
 
 $(document).ready(async function() {
     $('#version').text('Ver. ' + version);
-    
+
     // ポップアップ
     $('#back').click(function() {
         closePopup();
