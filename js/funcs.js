@@ -94,7 +94,7 @@ function showTable(songs) {
             <th style="width: 120px;">アーティスト名</th>
             <th style="width: 80px;">キー</th>
             <th style="width: 75px;">最高音※1</th>
-            <th style="width: 95px;">最高得点※2</th>
+            <th style="width: 100px;">最高得点※2</th>
             <th>コメント</th>
             <th style="width: 80px">追加日</th>
             <th style="width: 25px" class="only-normal-mode"></th>
