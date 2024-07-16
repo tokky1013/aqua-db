@@ -76,6 +76,7 @@ td > textarea::-webkit-scrollbar{
 
 td:nth-of-type(5) {
     text-align: center;
+    text-align-last: center;
 }
 
 /* ---------------------------------ポップアップ関連--------------------------------- */
