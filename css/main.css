@@ -92,7 +92,7 @@ td:nth-of-type(5) {
     width: 95%;
     max-height: 95vh;
     overflow-y: scroll;
-    padding: 15px 20px;
+    padding: 15px;
     background-color: #f2f2f2;
     display: none;
 }
