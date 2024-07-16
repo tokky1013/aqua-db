@@ -14,33 +14,39 @@
     <label id="back">
         <div id="filter" class="popup">
             <div class="d-flex justify-content-between">
-                <h1>絞り込み</h1>
+                <h1>フィルター</h1>
                 <label onclick="closePopup();"><i class="fa-solid fa-xmark fa-2x"></i></label>
             </div>
-            <div class="my-3 mx-2">
-                <label for="filter-title" class="form-label fs-4">曲名</label>
-                <input type="text" class="form-control filter-input w-75" id="filter-title">
+
+            <div class="field-container mb-4 px-3">
+                <div class="form-label fs-3 mt-1 mb-3">絞り込み</div>
+                <div class="my-3 mx-2">
+                    <label for="filter-title" class="form-label fs-4">曲名</label>
+                    <input type="text" class="form-control filter-input w-75" id="filter-title">
+                </div>
+                <div class="mb-3 mx-2">
+                    <label for="filter-artist" class="form-label fs-4">アーティスト</label>
+                    <input type="text" class="form-control filter-input w-75" id="filter-artist">
+                </div>
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" id="check1">
+                    <label class="form-check-label" for="check1">歌ったことがあるもののみ表示</label>
+                </div>
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" id="check2">
+                    <label class="form-check-label" for="check2">歌ったことがないもののみ表示</label>
+                </div>
             </div>
-            <div class="mb-3 mx-2">
-                <label for="filter-artist" class="form-label fs-4">アーティスト</label>
-                <input type="text" class="form-control filter-input w-75" id="filter-artist">
+
+            <div class="field-container mb-4 px-3">
+                <div class="form-label fs-3 mt-1 mb-3">並び替え</div>
+                <select class="form-select filter-select w-50 mt-3 mx-2" id="order">
+                    <option selected value="adding-date">追加日</option>
+                    <option value="title">曲名</option>
+                    <option value="artist">アーティスト名</option>
+                    <option value="score">最高得点</option>
+                </select>
             </div>
-            <div class="form-check mx-2">
-                <input class="form-check-input" type="checkbox" id="check1">
-                <label class="form-check-label" for="check1">歌ったことがあるもののみ表示</label>
-            </div>
-            <div class="form-check mx-2">
-                <input class="form-check-input" type="checkbox" id="check2">
-                <label class="form-check-label" for="check2">歌ったことがないもののみ表示</label>
-            </div>
-            <hr>
-            <h1>並び替え</h1>
-            <select class="form-select filter-select w-50 mt-3 mx-2" id="order">
-                <option selected value="adding-date">追加日</option>
-                <option value="title">曲名</option>
-                <option value="artist">アーティスト名</option>
-                <option value="score">最高得点</option>
-              </select>
             <hr>
             <div class="d-flex px-3">
                 <button class="btn btn-outline-dark w-50 me-5" onclick="resetFilter();">リセット</button>
@@ -52,28 +58,33 @@
                 <h1>データ</h1>
                 <label onclick="closePopup();"><i class="fa-solid fa-xmark fa-2x"></i></label>
             </div>
-            <details class="mt-2 mb-3 mx-2">
-                <summary class="form-label fs-4">JSONを読み込む</summary>
-                <div id="json-input" class="my-2">
-                    <div id="json-input-header"><label onclick="clearJson();"><i class="fa-solid fa-xmark me-1"></i></label></div>
-                    <textarea class="form-control mb-2" id="json-input-content"></textarea>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="overwrite" checked>
-                    <label class="form-check-label" for="overwrite">同じ曲を上書きする</label>
-                </div>
-                <button class="btn btn-dark mt-2 d-block mx-auto" onclick="readJson()">読み込む</button>
-                <hr>
-            </details>
 
-            <details class="m-2">
-                <summary class="form-label fs-4">JSONを書き出す</summary>
-                <button class="btn btn-dark mt-2 d-block mx-auto" onclick="writeJson();">書き出す</button>
-                <div id="json-output" class="mt-2 d-none">
-                    <div id="json-output-header"><label onclick="copyJson();"><i class="fa-regular fa-copy me-1"></i></label></div>
-                    <div id="json-output-content"></div>
+            <div class="field-container mb-4 px-3">
+                <div class="form-label fs-3 mt-1 mb-3">JSONを読み込む</div>
+                <div class="mx-2">
+                    <div id="json-input" class="my-2">
+                        <div id="json-input-header"><label onclick="clearJson();"><i class="fa-solid fa-xmark me-1"></i></label></div>
+                        <textarea class="form-control mb-2" id="json-input-content"></textarea>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="overwrite" checked>
+                        <label class="form-check-label" for="overwrite">同じ曲を上書きする</label>
+                    </div>
+                    <button class="btn btn-dark mt-3 d-block mx-auto" onclick="readJson()">読み込む</button>
+                    <!-- <hr class="mt-4"> -->
                 </div>
-            </details>
+            </div>
+            
+            <div class="field-container mb-3 px-3">
+                <div class="form-label fs-3 mt-1 mb-3">JSONを書き出す</div>
+                <div class="mx-2">
+                    <button class="btn btn-dark mt-3 d-block mx-auto" onclick="writeJson();">書き出す</button>
+                    <div id="json-output" class="mt-2 d-none">
+                        <div id="json-output-header"><label onclick="copyJson();"><i class="fa-regular fa-copy me-1"></i></label></div>
+                        <div id="json-output-content"></div>
+                    </div>
+                </div>
+            </div>
             <hr>
             <label class="text-danger mb-2 w-100 text-center fs-4" onclick="deleteData();">データを消去</label>
         </div>

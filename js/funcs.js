@@ -5,8 +5,8 @@ let isEditMode = false;
 
 // 編集モードを終了する時等
 function init() {
-    showTable(songs);
     exitEditMode();
+    filter();
     resetFilterInput();
 }
 // ---------------------------------ポップアップ関連---------------------------------

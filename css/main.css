@@ -89,10 +89,16 @@ td:nth-of-type(5) {
 
 .popup {
     margin: auto;
-    width: 80%;
+    width: 95%;
     padding: 15px 20px;
-    background-color: white;
+    background-color: #f2f2f2;
     display: none;
+}
+
+.field-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
 }
 
 #json-input,
@@ -120,13 +126,3 @@ td:nth-of-type(5) {
     border: none;
     background-color: transparent;
 }
-
-.popup summary {
-    display: block;
-    list-style: none;
-    /* text-align: center; */
-    text-decoration: underline;
-}
-.popup summary::-webkit-details-marker {
-    display:none;
-}  
