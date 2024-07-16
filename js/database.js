@@ -4,17 +4,27 @@ const storeName = 'songs';
 
 let db;
 let songs;
-let isInitialized = false;
 
 initDb();
 
 async function initDb() {
+    let isInitialized = false;
     db = await idb.openDb(dbName, dbVersion, db => {
         db.createObjectStore(storeName, {keyPath: 'uuid'});
         isInitialized = true;
     });
     if(isInitialized) {
-        await saveSongs([new Song([ 'Lemon', '米津玄師', '+6', 'ファ', '86.656(J)', '記入例', true,])]);
+        await saveSongs([new Song({
+            title: 'Lemon',
+            artist: '米津玄師',
+            key: 12,
+            highestTone: 5,
+            score: '86.656(J)',
+            comment: '記入例',
+            sang: true,
+            uuid: 'example',
+            createdAt: new Date().getTime(),
+        })]);
     }
   
     songs = await loadSongs();

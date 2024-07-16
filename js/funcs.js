@@ -6,8 +6,8 @@ let isEditMode = false;
 // 編集モードを終了する時等
 function init() {
     exitEditMode();
-    filter();
     resetFilterInput();
+    filter();
 }
 // ---------------------------------ポップアップ関連---------------------------------
 function openFilter() {
