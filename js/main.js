@@ -3,7 +3,7 @@ const version = '1.0.3';
 
 $(document).ready(async function() {
     $('#version').text('Ver. ' + version);
-
+    
     // ポップアップ
     $('#back').click(function() {
         closePopup();
