@@ -72,7 +72,7 @@ async function deleteData() {
 // ---------------------------------テーブル関連---------------------------------
 // 全てのテキストエリアの高さを自動調整するようにする
 function adjustTextareaHeight() {
-    $('textarea').each(function() {
+    $('td > textarea').each(function() {
         const textarea = $(this);
 
         textarea.on('input', function() {
