@@ -60,7 +60,7 @@
             </div>
 
             <div class="field-container mb-4 px-3">
-                <div class="form-label fs-3 ms-1 mb-3">JSONを読み込む</div>
+                <div class="form-label fs-3 ms-1 mb-3">データを読み込む</div>
                 <div class="mx-2">
                     <div id="json-input" class="my-2">
                         <div id="json-input-header"><label onclick="clearJson();"><i class="fa-solid fa-xmark me-1"></i></label></div>
@@ -76,7 +76,7 @@
             </div>
             
             <div class="field-container mb-3 px-3">
-                <div class="form-label fs-3 ms-1 mb-3">JSONを書き出す</div>
+                <div class="form-label fs-3 ms-1 mb-3">データを書き出す</div>
                 <div class="mx-2">
                     <button class="btn btn-dark mt-3 d-block mx-auto" onclick="writeJson();">書き出す</button>
                     <div id="json-output" class="mt-2 d-none">
@@ -110,6 +110,10 @@
             <div id="songs-count"></div>
             <p class="pt-1">※1 キーを変えた場合<br>
                 ※2 D: DAM, J: JOYSOUND</p>
+            <p id="warning">
+                <span class="fw-bold text-danger">注意</span><br>
+                ブラウザが自動的にデータを削除する場合があります。内容を変更した際はデータを書き出し、メモアプリ等に保存しておくことをお勧めします。
+            </p>
             <p>
                 <span class="fw-bold">音域の確認方法</span><br>
                 <a href="https:///vocal-range.com/" target="_blank">J-POP 音域の沼</a>で音域の確認ができる。

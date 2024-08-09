@@ -35,11 +35,12 @@ $(document).ready(async function() {
 if (navigator.storage && navigator.storage.persist) {
     navigator.storage.persist().then(granted => {
         if (granted) {
-            alert("Storage will not be cleared except by explicit user action");
+            console.log("Storage will not be cleared except by explicit user action");
+            $('#warning').css('display', 'none');
         } else {
-            alert("Storage may be cleared by the UA under storage pressure.");
+            console.log("Storage may be cleared by the UA under storage pressure.");
         }
     });
 }else {
-    alert("Storage may be cleared by the UA under storage pressure.");
+    console.log("Storage may be cleared by the UA under storage pressure.");
 }
