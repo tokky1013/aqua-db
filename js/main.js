@@ -31,3 +31,13 @@ $(document).ready(async function() {
         filter();
     });
 });
+
+async function checkPersist() {
+    const permanent = await window.navigator.storage.persist()
+    if(permanent) {
+        alert('ストレージが永続化されています。')
+    }else {
+        alert('ストレージが永続化されていません。')
+    }
+}
+checkPersist();
