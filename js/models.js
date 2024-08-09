@@ -55,10 +55,11 @@ class Song {
         const createdAt = new Date(this.createdAt);
         const now = new Date();
         const diff = now - createdAt;
+        const diff_days = Math.floor((now - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24) - Math.floor((createdAt - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24)
 
-        if (diff >= 1000 * 60 * 60 * 24 * 7) return createdAt.toLocaleDateString();
-        else if (diff >= 1000 * 60 * 60 * 24) return Math.floor(diff / 1000 / 60 / 60 / 24) + '日前';
-        else return '今日';
+        if (diff_days === 0) return '今日';                 //日付が一致する場合
+        if (diff_days <= 7) return diff_days + '日前';      // 7日以内の場合
+        return createdAt.toLocaleDateString();              // 8日以上前の場合
     }
 
     toDict() {
