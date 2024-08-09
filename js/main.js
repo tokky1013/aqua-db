@@ -32,12 +32,14 @@ $(document).ready(async function() {
     });
 });
 
-async function checkPersist() {
-    const permanent = await window.navigator.storage.persist()
-    if(permanent) {
-        alert('ストレージが永続化されています。')
-    }else {
-        alert('ストレージが永続化されていません。')
-    }
+if (navigator.storage && navigator.storage.persist) {
+    navigator.storage.persist().then(granted => {
+        if (granted) {
+            alert("Storage will not be cleared except by explicit user action");
+        } else {
+            alert("Storage may be cleared by the UA under storage pressure.");
+        }
+    });
+}else {
+    alert("Storage may be cleared by the UA under storage pressure.");
 }
-checkPersist();
