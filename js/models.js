@@ -54,10 +54,9 @@ class Song {
     getCreatedAt() {
         const createdAt = new Date(this.createdAt);
         const now = new Date();
-        const diff = now - createdAt;
-        const diff_days = Math.floor((now - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24) - Math.floor((createdAt - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24)
+        const diff_days = Math.floor((now - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24) - Math.floor((createdAt - new Date(1970, 0, 1, 0, 0, 0)) / 1000 / 60 / 60 / 24)   // 日数の差を計算
 
-        if (diff_days === 0) return '今日';                 //日付が一致する場合
+        if (diff_days === 0) return '今日';                 // 日付が一致する場合
         if (diff_days <= 7) return diff_days + '日前';      // 7日以内の場合
         return createdAt.toLocaleDateString();              // 8日以上前の場合
     }
