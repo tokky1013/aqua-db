@@ -306,6 +306,9 @@ function resetFilter() {
     else editedSongs = songs;
 
     notDisplayedSongs = [];
+    
+    const order = $('#order').val();
+    editedSongs = sort(editedSongs, order);
     showTable(editedSongs);
     if(isEditMode) startEditMode();
     else exitEditMode();
