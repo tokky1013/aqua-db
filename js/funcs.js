@@ -160,7 +160,6 @@ function startEditMode() {
     $('td > input, td > textarea').prop('readonly', false);
     $('td > select').prop('disabled', false);
     $('#switch-edit-mode').css('display', 'none');
-    $('#filtering-btn').css('bottom', 'calc(var(--btn-container-height) + 20px)')
     isEditMode = true;
 }
 function exitEditMode() {
@@ -171,7 +170,6 @@ function exitEditMode() {
     $('td > input, td > textarea').prop('readonly', true);
     $('td > select').prop('disabled', true);
     $('#switch-edit-mode').css('display', 'inline');
-    $('#filtering-btn').css('bottom', '20px')
     isEditMode = false;
 }
 
