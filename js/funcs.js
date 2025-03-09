@@ -89,7 +89,7 @@ function adjustTextareaHeight() {
 function showTable(songs) {
     let html = `
     <table id="table" class="table table-striped m-0">
-        <tr class="table-dark">
+        <tr id="table-header" class="table-dark">
             <th style="width: 120px;">曲名</th>
             <th style="width: 120px;">アーティスト名</th>
             <th style="width: 80px;">キー</th>
@@ -217,10 +217,10 @@ function deleteTableRow(uuid) {
 // テーブルの行を追加する
 function addTableRow() {
     const html = getTableRow(new Song());
-    $('#table').append(html);
+    $(html).insertAfter('#table-header');
     adjustTextareaHeight();
     startEditMode();
-    $('#main-container').scrollTop($('#main-container')[0].scrollHeight);
+    $('#main-container').scrollTop(0);
 }
 
 // 編集内容を削除して編集モードを終了
