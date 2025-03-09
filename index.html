@@ -18,36 +18,38 @@
                 <label onclick="closePopup();"><i class="fa-solid fa-xmark fa-2x"></i></label>
             </div>
 
-            <div class="field-container mb-4 px-3">
-                <div class="form-label fs-3 ms-1 mb-3">条件</div>
-                <div class="my-3 mx-2">
-                    <label for="filter-title" class="form-label fs-5">曲名</label>
-                    <input type="text" class="form-control filter-input w-75" id="filter-title">
+            <div id="filtering-items" class="mb-3">
+                <div class="field-container mb-3 px-3">
+                    <div class="form-label fs-3 ms-1 mb-3">条件</div>
+                    <div class="my-3 mx-2">
+                        <label for="filter-title" class="form-label fs-5">曲名</label>
+                        <input type="text" class="form-control filter-input w-75" id="filter-title" onclick="this.select();">
+                    </div>
+                    <div class="mb-3 mx-2">
+                        <label for="filter-artist" class="form-label fs-5">アーティスト</label>
+                        <input type="text" class="form-control filter-input w-75" id="filter-artist" onclick="this.select();">
+                    </div>
+                    <div class="form-check mx-2">
+                        <input class="form-check-input filter-input-sang" type="checkbox" id="check1">
+                        <label class="form-check-label" for="check1">歌ったことがあるもののみ表示</label>
+                    </div>
+                    <div class="form-check mx-2">
+                        <input class="form-check-input filter-input-sang" type="checkbox" id="check2">
+                        <label class="form-check-label" for="check2">歌ったことがないもののみ表示</label>
+                    </div>
                 </div>
-                <div class="mb-3 mx-2">
-                    <label for="filter-artist" class="form-label fs-5">アーティスト</label>
-                    <input type="text" class="form-control filter-input w-75" id="filter-artist">
-                </div>
-                <div class="form-check mx-2">
-                    <input class="form-check-input" type="checkbox" id="check1">
-                    <label class="form-check-label" for="check1">歌ったことがあるもののみ表示</label>
-                </div>
-                <div class="form-check mx-2">
-                    <input class="form-check-input" type="checkbox" id="check2">
-                    <label class="form-check-label" for="check2">歌ったことがないもののみ表示</label>
-                </div>
-            </div>
 
-            <div class="field-container mb-4 px-3">
-                <div class="form-label fs-3 ms-1 mb-3">並び替え</div>
-                <select class="form-select filter-select w-50 mt-3 mx-2" id="order">
-                    <option selected value="adding-date">追加日</option>
-                    <option value="title">曲名</option>
-                    <option value="artist">アーティスト名</option>
-                    <option value="score">最高得点</option>
-                </select>
+                <div class="field-container px-3">
+                    <div class="form-label fs-3 ms-1 mb-3">並び替え</div>
+                    <select class="form-select filter-select w-50 mt-3 mx-2" id="order">
+                        <option selected value="adding-date">追加日</option>
+                        <option value="title">曲名</option>
+                        <option value="artist">アーティスト名</option>
+                        <option value="score">最高得点</option>
+                    </select>
+                </div>
             </div>
-            <hr>
+            <!-- <hr> -->
             <div class="d-flex px-3">
                 <button class="btn btn-outline-dark w-50 me-5" onclick="resetFilter();">リセット</button>
                 <button class="btn btn-dark w-50" onclick="filter();closePopup();">絞り込み</button>
@@ -94,10 +96,12 @@
             <h1 class="m-0">あくあ DB</h1>
             <div class="flex-fill"></div>
             <label onclick="startEditMode();" id="switch-edit-mode"><i class="fa-solid fa-pen-to-square fa-2x me-3"></i></label>
-            <label onclick="openFilter();"><i class="fa-solid fa-filter fa-2x me-3"></i></label>
+            <!-- <label onclick="openFilter();"><i class="fa-solid fa-filter fa-2x me-3"></i></label> -->
             <label onclick="openSettings();"><i class="fa-solid fa-gear fa-2x"></i></label>
         </header>
         <main>
+            <label id="filtering-btn" onclick="openFilter();"><i class="fa-solid fa-filter fa-2x"></i></label>
+            <div id="table-container"></div>
         </main>
     </div>
     <footer>

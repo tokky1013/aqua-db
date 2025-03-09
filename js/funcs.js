@@ -11,7 +11,7 @@ function init() {
 }
 // ---------------------------------ポップアップ関連---------------------------------
 function openFilter() {
-    $('#filter').css('display', 'block');
+    $('#filter').css('display', 'flex');
     $('#settings').css('display', 'none');
     $('#back').css('display', 'flex');
 }
@@ -109,7 +109,7 @@ function showTable(songs) {
 
     html += '</table>';
 
-    $('main').html(html);
+    $('main > #table-container').html(html);
     $('#songs-count').text(songs.length + ' songs');
     adjustTextareaHeight();
 }

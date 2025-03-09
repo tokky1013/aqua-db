@@ -27,6 +27,23 @@ footer {
     height: calc(100svh - var(--btn-container-height));
     overflow-y: scroll;
 }
+
+/* フィルタリングボタン */
+#filtering-btn {
+    opacity: 0.85;
+    color: black;
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
 /* ---------------------------------編集モード関連--------------------------------- */
 
 #btn-container {
@@ -86,6 +103,7 @@ td:nth-of-type(5) {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     display: none;
+    z-index: 10;
 }
 
 .popup {
@@ -98,10 +116,18 @@ td:nth-of-type(5) {
     display: none;
 }
 
+#filter {
+    flex-direction: column;
+}
+
+#filtering-items {
+    overflow-y: scroll;
+    flex: 1;
+}
+
 .field-container {
     background-color: white;
     padding: 15px;
-    border-radius: 20px;
 }
 
 #json-input,

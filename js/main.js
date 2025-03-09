@@ -19,9 +19,9 @@ $(document).ready(async function() {
         }
     });
 
-    $("[type='checkbox']").on('click', function() {
+    $("input.filter-input-sang").on('click', function() {
         if ($(this).prop('checked')){
-            $("[type='checkbox']").prop('checked', false);
+            $("input.filter-input-sang").prop('checked', false);
             $(this).prop('checked', true);
         }
         filter();
